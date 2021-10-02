@@ -1,7 +1,7 @@
 <template>
   <div class="article">
     <img class="article-image" :src="result.images[0].image" :alt="result.images.image"/>
-    <router-link to="/article" class="headline"><h2>{{ result.headline }}</h2></router-link>
+    <router-link :to="{name: 'ArticlePage', params: {result}}" class="headline"><h2>{{ result.headline }}</h2></router-link>
     <p class="article-pitch" v-html="result.pitch.text"></p>
   </div>
 </template>

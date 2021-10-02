@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../pages/Home.vue';
+import ArticlePage from '../pages/ArticlePage.vue';
 
 Vue.use(VueRouter);
 
@@ -13,8 +14,8 @@ const routes = [
   {
     path: '/article',
     name: 'ArticlePage',
-    component: () =>
-      import(/* webpackChunkName: "about" */ '../pages/ArticlePage.vue'),
+    props: true,
+    component: ArticlePage,
   },
 ];
 
