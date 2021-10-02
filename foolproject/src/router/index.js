@@ -1,6 +1,9 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 import Home from '../pages/Home.vue';
-import ArticlePage from '../pages/ArticlePage.vue';
+
+Vue.use(VueRouter);
+
 const routes = [
   {
     path: '/',
@@ -10,11 +13,15 @@ const routes = [
   {
     path: '/article',
     name: 'ArticlePage',
-    component: ArticlePage,
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../pages/ArticlePage.vue'),
   },
 ];
-const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+
+const router = new VueRouter({
+  mode: 'history',
+  base: process.env.BASE_URL,
   routes,
 });
+
 export default router;

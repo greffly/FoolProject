@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Motley Money Review</h1>
     <div class="articles-grid">
       <ul v-for="result in results" :key="result.uuid">
         <ArticleSummary :result="result" />
@@ -10,7 +9,7 @@
 </template>
 
 <script>
-import ArticleSummary from '../components/Article.vue'
+import ArticleSummary from '../components/ArticleSummary.vue'
 
 export default {
   name: 'Home',
