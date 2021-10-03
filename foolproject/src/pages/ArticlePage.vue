@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="article-page">
     <router-link to='/' class='back-link'>← Back</router-link>
     <div class='article'>
       <h1>{{article.headline}}</h1>
@@ -9,12 +9,18 @@
       </div>
       <p class="full-article" v-html="article.body"></p>
     </div>
+    <SideBar />
   </div>
 </template>
 
 <script>
+import SideBar from '../components/SideBar.vue'
+
 export default {
   name: 'ArticlePage',
+  components: {
+    SideBar
+  },
   props: ['result'],
   data() {
     return {
@@ -29,22 +35,23 @@ export default {
     }
   },
   methods: {
-    // goBack() {
-    //   window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
-    // }
   },
 }
 </script>
 
 <style scoped>
-.article {
-  padding: 50px 100px;
-}
 .about-article {
   display: flex;
 }
+.article {
+  padding: 50px 100px;
+  width: 70%;
+}
 .article-date {
   margin-left: 20px;
+}
+.article-page {
+  display: flex;
 }
 .back-link {
   margin: 20px;

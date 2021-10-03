@@ -10,7 +10,8 @@
 export default {
   name: 'ArticleSummary',
   props: {
-    result: Object
+    result: Object,
+    stocks: Array
   },
   methods: {
   }
@@ -27,16 +28,13 @@ h2, li {
   background-color: whitesmoke;
   text-align: left;
 }
-
 .article-image {
   width: 100%;
   height: 300px;
 }
-
 .article-pitch >>> a {
   color: green;
 }
-
 .headline {
   text-decoration: none;
 }

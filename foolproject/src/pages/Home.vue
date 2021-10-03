@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="actions">
-    <button class="sort" name="sortByDate" v-on:click="sortByDate = !sortByDate">{{sortByDate ? '↑ Sort By Newest' : '↓ Sort By Oldest'}}</button>
+    <button class="sort" name="sortByDate" v-on:click="sortByDate = !sortByDate">{{sortByDate ? '↓ Sort By Oldest' : '↑ Sort By Newest'}}</button>
       <div class="search-wrapper">
         <input type="text" v-model="search" class="article-search" placeholder="Search Articles"/>
       </div>
     </div>
     <div class="articles-grid">
-      <ul v-for="result in filteredOrSortedArticles" :key="result.uuid">
+      <ul v-for="result in filteredOrSortedArticles" :key="result.uuid" class="result-list">
         <ArticleSummary :result="result" />
       </ul>
     </div>
@@ -27,12 +27,16 @@ export default {
       results: [],
       search: '',
       count: String,
-      sortByDate: true
+      sortByDate: true,
+      stocks: []
     }
   },
   created() {
     fetch('http://127.0.0.1:8000/content')
-      .then(response => response.json()).then(results => this.results = results.results).catch(error => console.log({error}));
+      .then(response => response.json())
+      .then(results => this.results = results.results)
+      .then(results => this.gatherStocks(results))
+      .catch(error => console.log({error}));
   },
   computed: {
     filteredOrSortedArticles() {
@@ -54,13 +58,21 @@ export default {
         } else {
           return Date.parse(a.publish_at) - Date.parse(b.publish_at);
         }
-
       })
 
       return filteredOrSortedResults;
     },
   },
   methods: {
+    gatherStocks(results) {
+    // the first for loop looks at the stocks associated with each article
+      for(let i = 0; i < results.length; i++) {
+        // the second for loop is necessary for articles with multiple stocks associated
+        for(let n = 0; n < results[i].instruments.length; n++) {
+          this.$store.state.stocks.push(results[i].instruments[n]);
+        }
+      }
+    }
   }
 }
 </script>
@@ -78,6 +90,10 @@ h1, li {
   display: grid;
   grid-template-columns: repeat(3, 3fr);
   row-gap: 20px;
+}
+.result-list:first-child>>>div {
+  background-color: pink;
+  grid-column: 1/span 3;
 }
 .article-search {
   font-size: 1.5em;
