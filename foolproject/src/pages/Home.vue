@@ -1,12 +1,13 @@
 <template>
   <div>
     <div class="actions">
+    <button class="sort" name="sortByDate" v-on:click="sortByDate = !sortByDate">{{sortByDate ? '↑ Sort By Newest' : '↓ Sort By Oldest'}}</button>
       <div class="search-wrapper">
         <input type="text" v-model="search" class="article-search" placeholder="Search Articles"/>
       </div>
     </div>
     <div class="articles-grid">
-      <ul v-for="result in filteredList" :key="result.uuid">
+      <ul v-for="result in filteredOrSortedArticles" :key="result.uuid">
         <ArticleSummary :result="result" />
       </ul>
     </div>
@@ -25,7 +26,8 @@ export default {
     return {
       results: [],
       search: '',
-      count: String
+      count: String,
+      sortByDate: true
     }
   },
   created() {
@@ -33,16 +35,32 @@ export default {
       .then(response => response.json()).then(results => this.results = results.results).catch(error => console.log({error}));
   },
   computed: {
-    filteredList() {
-      const filteredResults = this.results.filter(result => {
-        let tags = [];
-        for (let i = 0; i < result.tags.length; i++) {
-          tags.push(result.tags[i].slug);
+    filteredOrSortedArticles() {
+      let filteredOrSortedResults = this.results;
+
+      if (this.search != '' && this.search) {
+        filteredOrSortedResults = filteredOrSortedResults.filter(result => {
+          let tags = [];
+          for (let i = 0; i < result.tags.length; i++) {
+            tags.push(result.tags[i].slug);
+          }
+          return tags.includes(this.search.toLowerCase())
+        })
+      }
+
+      filteredOrSortedResults = filteredOrSortedResults.sort((a, b) => {
+        if (this.sortByDate === true) {
+          return Date.parse(b.publish_at) - Date.parse(a.publish_at);
+        } else {
+          return Date.parse(a.publish_at) - Date.parse(b.publish_at);
         }
-        return tags.includes(this.search.toLowerCase())
+
       })
-      return filteredResults.length > 0 ? filteredResults : this.results;
-    }
+
+      return filteredOrSortedResults;
+    },
+  },
+  methods: {
   }
 }
 </script>
@@ -64,5 +82,11 @@ h1, li {
 .article-search {
   font-size: 1.5em;
   line-height: 1.5em;
+}
+.sort {
+  font-size: 1.3em;
+  background-color: white;
+  border: none;
+  padding: 10px;
 }
 </style>
