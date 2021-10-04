@@ -89,9 +89,6 @@ export default {
 </script>
 
 <style scoped>
-h1, li {
-  color: #42b983;
-}
 .actions {
   display: flex;
   justify-content: flex-end;
@@ -114,9 +111,16 @@ h1, li {
 .result-list:first-child >>> div {
   display: flex;
 }
+.result-list:first-child >>> .image-container {
+  width: 50%;
+  padding-right: 2em;
+}
+.result-list:first-child >>> .article-image {
+  padding-bottom: 0;
+}
 .sort {
   font-size: 1.3em;
-  background-color: #F8F8F8;
+  background-color: #F2F2F2;
   border: none;
   padding-right: 1em;
   font-family: 'Open Sans', sans-serif;

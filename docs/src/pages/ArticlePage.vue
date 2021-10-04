@@ -56,13 +56,16 @@ export default {
 .back-link {
   font-family: 'Open Sans', sans-serif;
   font-size: 1.3em;
-  color: #138787;
+  color: #265E75;
   margin: 1em 0 0 1em;
   text-decoration: none;
   height: 100%;
   position: sticky;
   top: 125px;
   bottom: 0;
+}
+.full-article >>> a {
+  color: #265E75;
 }
 .sidebar {
   width: 25%;

@@ -8,7 +8,7 @@
 </template>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&family=Open+Sans:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap');
 html, body {
   margin: 0;
 }
@@ -17,8 +17,8 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
-  color: #2c3e50;
-  background-color: #F8F8F8;
+  color: #565656;
+  background-color: #F2F2F2;
 }
 h1, h2, h3 {
   font-family: 'Open Sans', sans-serif;
@@ -40,7 +40,7 @@ h2 {
   background-color: white;
 }
 .header-title {
-  color: #138787;
+  color: #76323F;
   text-decoration: none;
 }
 </style>

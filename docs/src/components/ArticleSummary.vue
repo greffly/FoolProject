@@ -38,17 +38,20 @@ h2, li {
 }
 .article-image {
   width: 100%;
-  max-width: 600px;
   height: 300px;
+  background-size: contain;
+  object-fit: cover;
+  object-position: 50% 50%;
   padding-bottom: 1em;
 }
 .article-pitch >>> a {
-  color: green;
+  color: #265E75;
 }
 .headline {
   text-decoration: none;
 }
-.headline>>>h2 {
+.headline >>> h2 {
+  color: #76323F;
   margin: 0;
 }
 .image-container {
