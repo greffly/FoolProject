@@ -24,9 +24,9 @@ export default {
   },
   data () {
     return {
+      count: String,
       results: [],
       search: '',
-      count: String,
       sortByDate: true,
       stocks: []
     }
@@ -46,7 +46,7 @@ export default {
         filteredOrSortedResults = filteredOrSortedResults.filter(result => {
           let tags = [];
           for (let i = 0; i < result.tags.length; i++) {
-            tags.push(result.tags[i].slug);
+            tags.push(result.tags[i].slug.toLowerCase());
           }
           return tags.includes(this.search.toLowerCase())
         })
@@ -59,6 +59,17 @@ export default {
           return Date.parse(a.publish_at) - Date.parse(b.publish_at);
         }
       })
+
+      // filteredOrSortedResults = filteredOrSortedResults.reduce((allArticles, article) => {
+      //   console.log('slug', article.tags[0].slug)
+      //   for(let i = 0; i < article.tags.length; i++) {
+      //     if (article.tags[i].slug === '10-promise') {
+      //       console.log('heyyyy')
+      //       return [article, ...allArticles];
+      //     }
+      //     return [...allArticles, article];
+      //   }
+      // });
 
       return filteredOrSortedResults;
     },
@@ -84,25 +95,30 @@ h1, li {
 .actions {
   display: flex;
   justify-content: flex-end;
-  margin: 10px 10px 0;
+  margin: 1em 2em 0;
 }
 .articles-grid {
   display: grid;
   grid-template-columns: repeat(3, 3fr);
   row-gap: 20px;
-}
-.result-list:first-child>>>div {
-  background-color: pink;
-  grid-column: 1/span 3;
+  padding: 0 2em;
 }
 .article-search {
-  font-size: 1.5em;
-  line-height: 1.5em;
+  font-size: 1.3em;
+  line-height: 1.3em;
+  font-family: 'Open Sans', sans-serif;
+}
+.result-list:first-child {
+  grid-column: 1/span 3;
+}
+.result-list:first-child >>> div {
+  display: flex;
 }
 .sort {
   font-size: 1.3em;
-  background-color: white;
+  background-color: #F8F8F8;
   border: none;
-  padding: 10px;
+  padding-right: 1em;
+  font-family: 'Open Sans', sans-serif;
 }
 </style>

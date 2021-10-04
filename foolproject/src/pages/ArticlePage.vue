@@ -1,6 +1,6 @@
 <template>
   <div class="article-page">
-    <router-link to='/' class='back-link'>← Back</router-link>
+    <router-link to='/' class='back-link'>←Back</router-link>
     <div class='article'>
       <h1>{{article.headline}}</h1>
       <div class="about-article">
@@ -9,7 +9,7 @@
       </div>
       <p class="full-article" v-html="article.body"></p>
     </div>
-    <SideBar />
+    <SideBar class="sidebar"/>
   </div>
 </template>
 
@@ -44,8 +44,8 @@ export default {
   display: flex;
 }
 .article {
-  padding: 50px 100px;
-  width: 70%;
+  padding: 3em 5em;
+  width: 75%;
 }
 .article-date {
   margin-left: 20px;
@@ -54,8 +54,20 @@ export default {
   display: flex;
 }
 .back-link {
-  margin: 20px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.3em;
+  color: #138787;
+  margin: 1em 0 0 1em;
   text-decoration: none;
-  font-size: 1.2em;
+  height: 100%;
+  position: sticky;
+  top: 125px;
+  bottom: 0;
+}
+.sidebar {
+  width: 25%;
+  height: 100%;
+  position: sticky;
+  top: 160px;
 }
 </style>
