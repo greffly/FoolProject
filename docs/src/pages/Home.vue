@@ -7,9 +7,9 @@
       </div>
     </div>
     <div class="articles-grid">
-      <ul v-for="result in filteredOrSortedArticles" :key="result.uuid" class="result-list">
+      <div v-for="result in filteredOrSortedArticles" :key="result.uuid" class="result-list">
         <ArticleSummary :result="result" />
-      </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -97,13 +97,17 @@ export default {
 .articles-grid {
   display: grid;
   grid-template-columns: repeat(3, 3fr);
-  row-gap: 20px;
-  padding: 0 2em;
+  row-gap: 3.1em;
+  column-gap: 1.8em;
+  padding: 0 2em 5em;
 }
 .article-search {
   font-size: 1.3em;
   line-height: 1.3em;
   font-family: 'Open Sans', sans-serif;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  border: none;
+  padding: .3em;
 }
 .result-list:first-child {
   grid-column: 1/span 3;

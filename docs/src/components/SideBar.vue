@@ -1,10 +1,10 @@
 <template>
   <div class="side-bar">
-    <ul v-for="stock in stocks.slice(0,3)" :key="stock.instrument_id" class="stock">
+    <div v-for="stock in stocks.slice(0,3)" :key="stock.instrument_id" class="stock">
       <p class="stock-company">{{stock.company_name}}</p>
       <p>TICK: {{stock.symbol}}</p>
       <a :href="stock.links.content" class="more-info">More Info</a>
-    </ul>
+    </div>
     <button v-on:click="shuffleStocks(stocks)" class="shuffle-stocks">Shuffle Stocks!</button>
   </div>
 </template>
@@ -37,8 +37,10 @@ export default {
   font-family: 'Open Sans', sans-serif;
   background-color: white;
   color: #76323F;
-  border: 1px solid #76323F;
-  padding: 10px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  padding: .5em;
+  margin-top: .5em;
 }
 .side-bar {
   display: flex;
@@ -48,9 +50,13 @@ export default {
 .stock {
   padding: 1em;
   background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
   width: 70%;
   font-size: 1.2em;
   margin: .5em;
+}
+.stock >>> p {
+  margin: .5em 0;
 }
 .stock-company {
   margin-top: 0;

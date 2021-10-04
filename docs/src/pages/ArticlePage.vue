@@ -48,7 +48,7 @@ export default {
   width: 75%;
 }
 .article-date {
-  margin-left: 20px;
+  margin-left: 1.7em;
 }
 .article-page {
   display: flex;

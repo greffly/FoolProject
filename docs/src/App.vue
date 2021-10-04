@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="header">
-      <router-link class="header-title" to="/"><h1>Motley Money Review</h1></router-link>
+      <router-link class="header-title" to="/"><h1>— Motley Money Review —</h1></router-link>
     </div>
     <router-view/>
   </div>
@@ -38,6 +38,7 @@ h2 {
   justify-content: center;
   align-items: center;
   background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 }
 .header-title {
   color: #76323F;

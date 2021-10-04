@@ -1,3 +1,7 @@
+/* My first attempt to deploy the site was unsuccessful, and so I discovered that Vue projects
+/ follow a different deployment pattern, especially for deploying on Github. I found this script
+/ and it allowed me to successfully publish the client-side project to GH.
+
 /* eslint-disable no-console */
 const execa = require('execa');
 const fs = require('fs');

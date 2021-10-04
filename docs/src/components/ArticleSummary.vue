@@ -1,7 +1,7 @@
 <template>
   <div class="article">
     <div class="image-container">
-      <img class="article-image" :src="result.images[0].image" :alt="result.images.image"/>
+      <img class="article-image" :src="result.images[0].image" :alt="result.images[0].name"/>
     </div>
     <div class="article-details">
       <router-link :to="{name: 'ArticlePage', params: {result: result, path: result.path}}" class="headline"><h2>{{ result.headline }}</h2></router-link>
@@ -27,10 +27,11 @@ h2, li {
   color: black;
 }
 .article {
-  padding: 20px 20px 0;
+  padding: 1.5em 1.5em 0;
   height: 100%;
   background-color: white;
   text-align: left;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 }
 .article-details {
   display: flex;
