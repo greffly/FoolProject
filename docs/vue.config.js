@@ -1,3 +1,3 @@
-module.exports = {
-  publicPath: '/MotleyMoneyReview/',
-};
+// module.exports = {
+//   publicPath: '/MotleyMoneyReview/',
+// };
