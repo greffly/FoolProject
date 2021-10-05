@@ -4,6 +4,7 @@
       <img class="article-image" :src="result.images[0].image" :alt="result.images[0].name"/>
     </div>
     <div class="article-details">
+      <!-- passing the API data and the path name through route params -->
       <router-link :to="{name: 'ArticlePage', params: {result: result, path: result.path}}" class="headline"><h2>{{ result.headline }}</h2></router-link>
       <p class="article-pitch" v-html="result.pitch.text"></p>
     </div>
@@ -16,16 +17,11 @@ export default {
   props: {
     result: Object,
     stocks: Array
-  },
-  methods: {
   }
 }
 </script>
 
 <style scoped>
-h2, li {
-  color: black;
-}
 .article {
   padding: 1.5em 1.5em 0;
   height: 100%;
@@ -46,13 +42,13 @@ h2, li {
   padding-bottom: 1em;
 }
 .article-pitch >>> a {
-  color: #265E75;
+  color: var(--accent);
 }
 .headline {
   text-decoration: none;
 }
 .headline >>> h2 {
-  color: #76323F;
+  color: var(--title);
   margin: 0;
 }
 .image-container {

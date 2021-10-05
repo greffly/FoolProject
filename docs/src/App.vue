@@ -7,18 +7,26 @@
   </div>
 </template>
 
+
 <style>
+/* default styling for the app */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap');
 html, body {
   margin: 0;
+}
+:root {
+  --background: #F2F2F2;
+  --font: #4A4949;
+  --title: #76323F;
+  --accent: #265E75;
 }
 #app {
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
-  color: #565656;
-  background-color: #F2F2F2;
+  color: var(--font);
+  background-color: var(--background);
 }
 h1, h2, h3 {
   font-family: 'Open Sans', sans-serif;
@@ -28,6 +36,17 @@ h1 {
 }
 h2 {
   font-size: 2em;
+}
+.button {
+  font-size: 1.3em;
+  font-family: 'Open Sans', sans-serif;
+  background-color: white;
+  color: var(--title);
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  padding: .5em;
+  margin-top: .5em;
+  cursor: pointer;
 }
 .header {
   height: 100px;
@@ -41,7 +60,7 @@ h2 {
   box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 }
 .header-title {
-  color: #76323F;
+  color: var(--title);
   text-decoration: none;
 }
 </style>

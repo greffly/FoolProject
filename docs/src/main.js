@@ -5,6 +5,7 @@ import store from './store';
 
 Vue.config.productionTip = false;
 
+// I included the router and store so that they will live throughout the app
 new Vue({
   router,
   store,
